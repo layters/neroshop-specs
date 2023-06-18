@@ -9,9 +9,13 @@ The neroshop DHT is based on the Kademlia Distributed Hash Table (DHT) with some
 
 ## Definitions
 
-### Replication factor or maximum closest nodes (`k`)
-The amount of replication is governed by the replication parameter `k`. The
-default value for `k` is currently 10, but may increase to 20 or higher depending on node churn.
+### Replication factor (`r`)
+The amount of replication is governed by the replication parameter `r`. The
+default value for `r` is currently 10 and it is usually the same value as the Maximum closest nodes (`k`).
+The replication factor may increase to 20 or higher depending on node churn.
+
+###  Maximum closest nodes (`k`)
+Represents the number of nodes closest to a key or id, in which put messages are sent to. The default value for `k` is currently 10.
 
 ### Distance
 
@@ -29,12 +33,14 @@ sha3_256(key2))`.
 
 * `find_node`: This query type is used to request a list of nodes with an id closest to a specific id or key.
 
-The response is a `nodes` message containing information about a node such as its IP address and port.
+The response is a `nodes` message containing information about nodes such as their IP addresses and ports.
 
 
 * `put`: This query type is used to store key-value data in a receiving node's hash table. 
 
-The querying node sends a `put` message to the `NEROSHOP_DHT_REPLICATION_FACTOR` nodes with an id closest to the key.
+The querying node sends a `put` message to the `r` nodes with an id closest to the key.
+If any of the closest nodes fail to respond to the put request, they are replaced by other closest nodes within the routing table.
+
 When the querying node makes a put request and it is the originator of the data, it also stores its own data in its hash table right after sending the `put` to the other nodes in its routing table.
 On receiving a `put` request, a node will `store` the key-value pair data in its own hash table.
 
@@ -48,7 +54,7 @@ The querying node typically sends a `get` message to the `k` nodes with an id cl
 
 
 * `map`: Like `put`, except it uses the value to create search terms and map them to the corresponding key.
-Unlike `put`, `map` stores data in the local database file in order to make use of SQLite's FTS5 (Full-Text Search 5) feature and perform advanced and efficient searches.
+Unlike `put`, `map` stores data in the local database file rather than the hash table in order to make use of SQLite's FTS5 (Full-Text Search 5) feature and perform advanced and efficient searches.
 
 The processing of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
 
