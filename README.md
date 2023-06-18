@@ -53,9 +53,9 @@ Unlike `put`, `map` stores data in the local database file in order to make use 
 The processing of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
 
 
-* `set`: Same as put but it updates/modifies the value to a key without changing the key.
+* `set`: Same as put, except it updates the value to a key without changing the key.
 
-This query also checks and validates the signature beforehand, using the user's public keys to ensure that the data is only altered by its originator.
+This query also checks and validates the signature beforehand, using the user's public keys to ensure that the data can only be modified by its originator.
 
 
 
