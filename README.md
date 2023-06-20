@@ -58,7 +58,7 @@ The querying node typically sends a `get` message to the `k` nodes with an id cl
 * `map`: Like `put`, except it uses the value to create search terms and map them to the corresponding key.
 Unlike `put`, `map` stores data in the local database file rather than the hash table in order to make use of SQLite's FTS5 (Full-Text Search 5) feature and perform advanced and efficient searches.
 
-The processing of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
+The process of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
 
 
 * `set`: Same as put, except it updates the value to a key without changing the key.
