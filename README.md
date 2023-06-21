@@ -55,7 +55,7 @@ Each data contains metadata which specifies the type of data that is being store
 The querying node typically sends a `get` message to the `k` nodes with an id closest to the key and when any of those closests nodes receive the `get`, they respond with a message containing the value to the requested key. In the case that any of the closest nodes do not have the value in their hash table, they attempt to send `get` messages to the closest nodes in their routing table until the value is found or not.
 
 
-* `map`: Like `put`, except it uses the value to create search terms and map them to the corresponding key.
+* `map`: This query type takes the value then uses it to create search terms and map them to the corresponding key.
 Unlike `put`, `map` stores data in the local database file rather than the hash table in order to make use of SQLite's FTS5 (Full-Text Search 5) feature and perform advanced and efficient searches.
 
 The process of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
@@ -65,6 +65,30 @@ The process of mapping search terms to DHT keys is known as inverted indexing or
 
 This query also checks and validates the signature beforehand, using the user's public keys to ensure that the data can only be modified by its originator.
 
+
+
+## Features
+- [x] Boostraping mechanism(s)
+    - Hardcoded bootstrap nodes
+- [x] Keys/Node IDs
+    - represented as SHA-3-256 hashes
+- [x] KBuckets
+    - represented as an unordered_map of <int, std::vector<std::unique_ptr<Node>>>. A max of 256 kbuckets is set, each of them containing up to 25 elements.
+- [x] XOR Distance between Keys
+- [x] Basic protocol message types: `ping`, `find_node`, `put`, and `get`
+- [x] Periodic health checking
+    - checks node liveliness every `NEROSHOP_DHT_PERIODIC_CHECK_INTERVAL` seconds
+- [x] Periodic republishing (refresh)
+    - republishes data to the network every `NEROSHOP_DHT_REPUBLISH_INTERVAL` hours
+- [x] Distributed indexing
+    - the moment a node joins the network, it receives indexing data from the initial `k` nodes it contacts via the `map` protocol message type.
+- [x] Data validation
+    - validates data correctness
+- [ ] Data integrity verification
+    - verifies data integrity using digital signatures
+- [ ] node IP address Blacklisting
+- [ ] Keyword/search term blacklisting
+- [ ] Expiration dates on certain data such as `orders`
 
 
 ## References
