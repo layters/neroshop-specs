@@ -80,8 +80,9 @@ This query also checks and validates the signature beforehand, using the user's 
     - checks node liveliness every `NEROSHOP_DHT_PERIODIC_CHECK_INTERVAL` seconds
 - [x] Periodic republishing (refresh)
     - republishes data to the network every `NEROSHOP_DHT_REPUBLISH_INTERVAL` hours
+    - in addition to periodic republishing, node data is automatically republished upon termination of the GUI client
 - [x] Distributed indexing
-    - the moment a node joins the network, it receives indexing data from the initial `k` nodes it contacts via the `map` protocol message type.
+    - the moment a node joins the network, it receives indexing data from the initial `k` closest nodes it contacts via the `map` protocol message type.
 - [x] Data validation
     - validates data correctness
 - [ ] Data integrity verification
