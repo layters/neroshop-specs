@@ -75,7 +75,7 @@ This query also checks and validates the signature beforehand, using the user's 
 - [x] KBuckets
     - represented as an unordered_map of <int, std::vector<std::unique_ptr<Node>>>. A max of 256 kbuckets is set, each of them containing up to 25 elements.
 - [x] XOR Distance between Keys
-- [x] Basic protocol message types: `ping`, `find_node`, `put`, and `get`
+- [x] Basic protocol message types: `ping`, `find_node`, `put`, and `get` as well as two additional message types specific to this implementation: `map` and `set`.
 - [x] Periodic health checking
     - checks node liveliness every `NEROSHOP_DHT_PERIODIC_CHECK_INTERVAL` seconds
 - [x] Periodic republishing (refresh)
