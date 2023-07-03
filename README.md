@@ -56,7 +56,7 @@ The querying node typically sends a `get` message to the `k` nodes with an id cl
 
 
 * `map`: This query type takes the value then uses it to create search terms and map them to the corresponding key.
-Unlike `put`, `map` stores data in the local database file rather than the hash table in order to make use of SQLite's FTS5 (Full-Text Search 5) feature and perform advanced and efficient searches.
+Unlike `put`, `map` stores data in the local database file rather than the in-memory hash table in order to make use of SQLite's FTS5 (Full-Text Search 5) feature and perform advanced and efficient searches.
 
 The process of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
 
@@ -87,7 +87,7 @@ This query also checks and validates the signature beforehand, using the user's 
     - validates data correctness
 - [ ] Data integrity verification
     - verifies data integrity using digital signatures
-- [ ] node IP address Blacklisting
+- [ ] node IP address blacklisting
 - [ ] Keyword/search term blacklisting
 - [ ] Expiration dates on certain data such as `orders`
 
