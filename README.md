@@ -205,7 +205,7 @@ This query also checks and validates the signature beforehand, using the user's 
 
 
 ## RPC messages
-[`msgpack`](https://msgpack.org/) is used to trasmit data throughout the neroshop network. JSON data is first converted to msgpack before it is trasmitted. This is because msgpack reduces the JSON data size by 32%, making it faster and more efficient to transfer data through the network.
+[`msgpack`](https://msgpack.org/) is used to trasmit data throughout the neroshop network. JSON data is first converted to msgpack before it is trasmitted. This is because msgpack reduces the JSON data size by 32%, making it smaller, faster and more efficient to transfer data through the network.
 
 There are three types of messages that are sent in the neroshop network: `query`, `response`, and `error`. A query is basically a request made by a peer. The primary query types used are `ping`, `find_node`, `put`, `get`, `map`, and `set`.
 When a query is sent, normally a response should be expected. Responses are typically a sign of a successful execution of a query. Sometimes the result of a query may be an error if a function could not be executed or no value is returned from a `get` request, or perhaps something else.
