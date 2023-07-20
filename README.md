@@ -91,7 +91,7 @@ This query also checks and validates the signature beforehand, using the user's 
 - [ ] Keyword/search term blacklisting
 - [ ] Expiration dates on certain data such as `orders`
 
-## Data visualization
+## Data serialization (examples)
 **User account:**
 ```json
 {
@@ -106,6 +106,20 @@ This query also checks and validates the signature beforehand, using the user's 
   "signature": "SigV2PagGh1SMm7KVrahMXeb7177Mzox7RHr1ciS1juk5WLfWatZiEods4ougHZKzgujp1oYhtG2vDguYcH3ac5zMYtjY"
 }
 ```
+```json
+{
+  "avatar": {
+    "name": "pixelArt-1689350451803.png",
+    "size": 3348
+  },
+  "display_name": "lupita",
+  "metadata": "user",
+  "monero_address": "59PFsC9wHepdrz5oseoDW3auk8a1HtUZbDHmPWwbBFjsa3kcue9N4GbK2hMRoFGgyLGNv14Z2QjDGjT1TrsC1UerPK3igm4",
+  "public_key": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwtXNtHoyaiMGbtB2R1m+\nVMI15xjzERCnUsqL2qrxCo/QCcCqtKjEhdknPQcMO5taAmaUJnovDfJcmIA5M0kQ\n4ZKjKtzREN/YSanvgAemkX75I5rQPXIMQAz4Cs5Ie+cheOrl1WYo8DoAzlNRi8z0\nT2MDNBisMaWhqGfwEUgNtXQjxZpcYs9GmiM4qgIdCSniA6ixuPAsLNCI/LXhEBxX\ng1tyYJW4nOm9Sb0vlDr/ZiQRPDz23TdvlF6C1OXotsdd2dhNsbSEtXE7wEUYPX6O\n2UXbBF5PtzrmTuB6zoC9U4qfXrpkFJ9uPxpjER2fa0RSdcRhmywh/WTgVOUjR8iT\nRqSEs+8ByyZ2qV6TUSzKo2dWwCQIO6NHcX6ITbSrUeGFddIWuUmWVRGtG9d62yZD\n5o2895Qd+0J51L7l7xUNcFHmjxSm35AiGsvHJ4u583pz4DUodB8vASODuz/85X3x\nFdmLHV0IpeKZvpaSmYIRUsizg6SzXHNTYHEmOIlYCCJ16Zz2WO9P3OkzNms0ScKq\nfnL+OSBC47zquWpI905bB625SVJJaUZJvlIg6/wU2fdfVteeuboEiMiPyted9aId\nS8Vq8Ks8yFTZJzvhyOqpzSLx6/v5OuA+ABQH+AHOax36QRB+i6Fe3Vnc/YJLjmTp\n/8+KD7atMZb0UOpGCy4INeUCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+  "signature": "SigV2gASDvXcQkeW5LLzt7mMxZu5NvBb3s9rawYzf9wDVoWqeUtxtKTtWhvLVM9pn3rJ6aBYvKNX47tuhv57BPRP6jTyL"
+}
+```
+
 **Listing**:
 ```json
 {
@@ -188,6 +202,16 @@ This query also checks and validates the signature beforehand, using the user's 
 **Order**:
 ```json
 ```
+
+## RPC messages
+[`msgpack`](https://msgpack.org/) is used to trasmit data throughout the neroshop network. JSON data is converted to msgpack before it is trasmitted. This is because msgpack reduces the JSON data size by 32%, making it faster and more efficient to transfer data through the network.
+
+There are three types of messages that are sent in the neroshop network: `query`, `response`, and `error`. A query is basically a request made by a peer. The primary query types used are `ping`, `find_node`, `put`, `get`, `map`, and `set`.
+When a query is sent, normally a response should be expected. Responses are typically a sign of a successful execution of a query. Sometimes the result of a query may be an error if a function could not be executed or no value is returned from a `get` request, or perhaps something else.
+
+Each query consists a `query` field containing the query type, a `args` field containing the arguments for a specific query. A response consists of any value/field representing the result of the response . All protocol messages must have an `id` representing the node's id and a `tid` to identify which message matches with which response. With the exception of IPC mode where the local GUI client sends queries to the local daemon server. A version is also included in each message to specify which version of the neroshop DHT is being used by a peer.
+
+More info coming soon ...
 
 ## References
 
