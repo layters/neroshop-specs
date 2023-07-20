@@ -216,4 +216,5 @@ Each query consists a `query` field containing the query type, an `args` field c
 ## References
 
 [BitTorrent](http://bittorrent.org/beps/bep_0005.html)
-[anarkiocrypto]() - for helping me come up with the design for the data structure for users, listings, orders etc.
+
+[anarkiocrypto](https://twitter.com/AnarkioC) - for helping me come up with the design for the data structure for users, listings, orders etc.
