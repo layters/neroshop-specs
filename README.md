@@ -92,7 +92,7 @@ This query also checks and validates the signature beforehand, using the user's 
 - [ ] Expiration dates on certain data such as `orders`
 
 ## Data serialization (examples)
-**User account:**
+**User:**
 ```json
 {
   "avatar": {
