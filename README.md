@@ -63,8 +63,9 @@ The process of mapping search terms to DHT keys is known as inverted indexing or
 
 * `set`: Same as put, except it updates the value to a key without changing the key.
 
-This query also checks and validates the signature beforehand, using the user's public keys to ensure that the data can only be modified by its originator.
+This query also checks and validates the signature beforehand, using the user's RSA or Monero keys to ensure that the data can only be modified by its originator.
 
+Set messages can only be processed while in IPC mode so that outside nodes cannot modify other peers' data anyhow.
 
 
 ## Features
