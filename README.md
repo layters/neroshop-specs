@@ -91,6 +91,103 @@ This query also checks and validates the signature beforehand, using the user's 
 - [ ] Keyword/search term blacklisting
 - [ ] Expiration dates on certain data such as `orders`
 
+## Data visualization
+**User account:**
+```json
+{
+  "avatar": {
+    "name": "avatars-xK2cS4dDrz8LNke4-X4YlUw-t500x500.jpg",
+    "size": 72163
+  },
+  "display_name": "dude",
+  "metadata": "user",
+  "monero_address": "5ARm5QSDW3uWT8EEeoQ5mHghcw82SqYrUHzS99CS1TaxY3XDMGCyeDUN59veZwYfLCNH6mvvzKwJYiLv7Bag1Swn7sSEF9e",
+  "public_key": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAoGKa3cN7JNj6xKgvG49f\nkg4Izod2oqNqoraYHMLAhI29MWXUIc8FizhhJUlO4Ts3i2qFaq1ng5jM15K2SQUo\na1ve4rATAbL0j+AnFMPQ/i883m6UJRdO5rUdtjLiKELuXckaQ3pbOmJ06lXI3qQ+\nzrPtgHp7hK2zfJSI+lgqHfU5AoQThOo5+QhuVgu1eJrvTMphc+XSPQ/8/7aPAdsB\nWI3FFy/QRtKr7RsjrsC2rTzYkqUo+MBXocN6d/1qCEPOgLuKJZvsKHt0VtWEHcQ2\ndTIqn4MhCh7Vz7psS1rBlfFW/j+PHXsQS7IRtU8RIy9yAoCKRO80aBhUe1ktvLaP\n2zXnW87vrRABYCc9fy9e3ZzCbPbAE/avozF/qR+XusBEKuvNUmMKW7CBet4CsGXc\nCAbJh5HIwrp+lgMZlgGLTjQ5cfegqtYtXWlJz09BbaY1+VNKhhhd0X/CN7apmqpu\njq94C9Db3dQGqTowHYflnwB3G3iXEcllmwECgFAIy4AG1cx3p/xkyXKe7r8QKcZF\nywE/2IQg8xmqtNDyQvcrIA9y6nyARskYZuqio62eQTaLKiYPTELmg5XmXyyVarJw\nIVXeWjqFz7WtS3RnM7RxoN8cwnd4JPIFTusGkucLAd/TBYKytPrsV68dvUmyrm1F\no63Sv7T7kBpeGIn5VOFY0wUCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+  "signature": "SigV2PagGh1SMm7KVrahMXeb7177Mzox7RHr1ciS1juk5WLfWatZiEods4ougHZKzgujp1oYhtG2vDguYcH3ac5zMYtjY"
+}
+```
+**Listing**:
+```json
+{
+  "condition": "New",
+  "currency": "USD",
+  "date": "2023-07-20 06:52:01",
+  "id": "44d7f6f9-9a94-4fd9-84ad-7dc22a182ada",
+  "location": "Germany",
+  "metadata": "listing",
+  "price": 10.0,
+  "product": {
+    "category": "Sports & Outdoors",
+    "description": "",
+    "id": "0442c628-beab-4564-b6de-8a6baa7c6490",
+    "images": [
+      {
+        "id": 0,
+        "name": "monero-symbol-on-white-480.png",
+        "size": 6768
+      }
+    ],
+    "name": "Monero ball"
+  },
+  "quantity": 1,
+  "seller_id": "5ARm5QSDW3uWT8EEeoQ5mHghcw82SqYrUHzS99CS1TaxY3XDMGCyeDUN59veZwYfLCNH6mvvzKwJYiLv7Bag1Swn7sSEF9e",
+  "signature": "SigV2bo1rMpaK9xeWU6CEuSnSCJ7buT8qANS8gUsjRx4wVpqpdxwj7LbLitkjYfD1NJeYmvJndYM9bUe2qWGrn7W35ebz"
+}
+```
+```json
+{
+  "condition": "New",
+  "currency": "USD",
+  "date": "2023-07-20 07:14:26",
+  "id": "2cd40b7b-a142-425f-b17a-afe9e6064a78",
+  "location": "Thailand",
+  "metadata": "listing",
+  "price": 5.0,
+  "product": {
+    "category": "Food & Beverages",
+    "description": "",
+    "id": "cfe34584-d57c-4ec3-badf-f9b406a7b4d2",
+    "images": [
+      {
+        "id": 0,
+        "name": "gitea.png",
+        "size": 26874
+      }
+    ],
+    "name": "Green Tea"
+  },
+  "quantity": 100,
+  "seller_id": "59PFsC9wHepdrz5oseoDW3auk8a1HtUZbDHmPWwbBFjsa3kcue9N4GbK2hMRoFGgyLGNv14Z2QjDGjT1TrsC1UerPK3igm4",
+  "signature": "SigV2ZqBnw1sass4BrpWeq5HPacdf1zgdfkikYEW356kJw4XrazHuRPrirYydSeGVcm2wcRTWWLu5g1oX2PfxogjnnYNQ"
+}
+
+```
+
+**Product rating**:
+```json
+{
+  "comments": "This product is aiight",
+  "metadata": "product_rating",
+  "product_id": "2b715653-da61-4ea0-8b5a-ad2754d78ba1",
+  "rater_id": "59HiXx4PNJDd4sWVWhWtqb8m9pB7Huyc9HgybAwjFGkj27HozxkaLXNDhFH4wtzfYCe8GLzhA5YUHPUGWnjfRhvdL5HHE1C",
+  "signature": "SigV2BExHYCAKkhoTbC3L4tx2EeHTaz2ZAtLfu7YgWcu1Ex3JXVk4X8XssfPE3TLBSQGRNLFENo4iAMa3gFV3u3bKoEvY",
+  "stars": 3
+}
+```
+**Seller rating**:
+```json
+{
+  "comments": "I love you!!!",
+  "metadata": "seller_rating",
+  "rater_id": "59JKGvtkpPQ7UocLgK5UV79GTEYJqDsJMgF9CiKmmms858VKvVvx1uX8DfXKYLWtoK9LVL38WQgf1JVn8yGWXZuJJzVwWGt",
+  "score": 1,
+  "seller_id": "5AncSFWauoN8bfA68uYpWJRM8fFxEqztuhXSGkeQn5Xd9yU6XqJPW7cZmtYETUAjTK1fCfYQX1CP3Dnmy5a8eUSM5n3C6aL",
+  "signature": "SigV2idt52jHJfAic6ccT5yQwkJ3iP7cmNZ8Y1DYFBoQme9C9foRBzM4b2XeZwCQyCwvoDPM4xbWQ3FBP9NvVCBMe6gkr"
+}   
+```
+**Order**:
+```json
+```
 
 ## References
 
