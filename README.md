@@ -14,7 +14,7 @@ Represents the number of nodes closest to a key, in which `put` messages are sen
 The default value for `r` is currently 10 and it is usually the same value as the maximum closest nodes (`k`).
 
 ###  Maximum closest nodes (`k`)
-Represents the number of nodes closest to a key or id, in which `get` and `find_node` messages are sent to. The default value for `k` is currently 10.
+Represents the number of nodes closest to a key or id, in which `get` and `find_node` messages are sent to. The default value for `k` is currently 20.
 
 ### Distance
 
