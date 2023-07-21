@@ -11,7 +11,7 @@ The neroshop DHT is based on the Kademlia Distributed Hash Table (DHT) with some
 
 ### Replication factor (`r`)
 Represents the number of nodes closest to a key, in which `put` messages are sent to.
-The default value for `r` is currently 10 and it is usually the same value as the maximum closest nodes (`k`).
+The default value for `r` is currently 10 and it is usually the same value as the maximum closest nodes (`k`) or lower.
 
 ###  Maximum closest nodes (`k`)
 Represents the number of nodes closest to a key or id, in which `get` and `find_node` messages are sent to. The default value for `k` is currently 20.
