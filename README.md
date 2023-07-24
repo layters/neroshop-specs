@@ -126,7 +126,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
 {
   "condition": "New",
   "currency": "USD",
-  "date": "2023-07-20 06:52:01",
+  "date": "2023-07-20T06:52:01Z",
   "id": "44d7f6f9-9a94-4fd9-84ad-7dc22a182ada",
   "location": "Germany",
   "metadata": "listing",
@@ -153,7 +153,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
 {
   "condition": "New",
   "currency": "USD",
-  "date": "2023-07-20 07:14:26",
+  "date": "2023-07-20T07:14:26Z",
   "id": "2cd40b7b-a142-425f-b17a-afe9e6064a78",
   "location": "Thailand",
   "metadata": "listing",
