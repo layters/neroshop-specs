@@ -86,11 +86,11 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
     - the moment a node joins the network, it receives indexing data from the initial `k` closest nodes it contacts via the `map` protocol message type.
 - [x] Data validation
     - validates data correctness
-- [ ] Data integrity verification
-    - verifies data integrity using digital signatures
+- [x] Data integrity verification
+    - verifies data integrity using either **monero** or RSA digital signatures
 - [ ] node IP address blacklisting
 - [ ] Keyword/search term blacklisting
-- [ ] Expiration dates on certain data such as `orders`
+- [x] Expiration dates on certain data such as `orders`
 
 ## Data serialization (examples)
 **User:**
@@ -200,10 +200,38 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
   "signature": "SigV2idt52jHJfAic6ccT5yQwkJ3iP7cmNZ8Y1DYFBoQme9C9foRBzM4b2XeZwCQyCwvoDPM4xbWQ3FBP9NvVCBMe6gkr"
 }   
 ```
+
 **Order**:
 ```json
+{
+	"coin": "Monero",
+	"created_at": "2023-07-27T05:42:29Z",
+	"customer_id": "52P6EwT4zhpEfFhDLc9WSWGkSaEudfF7t597EnFRnQ8sYv4SqdS7BwDPddiJtxeQUHSP7SYAfgycaPhwMvWLc8p8M26eDkB",
+	"delivery_option": "Delivery",
+	"discount": 0.0,
+	"id": "43f5ab3f-7288-4ad5-8295-adaada079101",
+	"items": [{
+		"listing_key": "2e6b41de8e53b7cd8c143d4632d13fe3aafcc7ab0ce6c94a7fac232ea0e4634c",
+		"quantity": 1,
+		"seller_id": "53TTZUaFGVB9koKDF1tpxc3APGUVEBMqURpr1aMFZwhJPP8oJksaspq6XgHVaoZijwDnDHRYuMDFvbzNZUYcH2tt8NzMqtd"
+	}, {
+		"listing_key": "2e8c94bb4b3448478ab1cc7db22ee95f8c607a595d90f3284efb39c033c15c55",
+		"quantity": 1,
+		"seller_id": "53TTZUaFGVB9koKDF1tpxc3APGUVEBMqURpr1aMFZwhJPP8oJksaspq6XgHVaoZijwDnDHRYuMDFvbzNZUYcH2tt8NzMqtd"
+	}],
+	"metadata": "order",
+	"notes": "12 Robot Dr. Boston MA 02115",
+	"payment_option": "Escrow",
+	"shipping_cost": 0.0,
+	"status": "New",
+	"subtotal": 0.036584724958608955,
+	"total": 0.036584724958608955
+}
 ```
 
+**Message**:
+```json
+```
 
 ## RPC messages
 [`msgpack`](https://msgpack.org/) is the binary serialization format used to transmit data throughout the neroshop network. JSON data is first converted to msgpack before it is transmitted. This is because msgpack reduces the JSON data size by 32%, making it smaller, faster and more efficient to transfer data across the network.
