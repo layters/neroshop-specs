@@ -231,6 +231,12 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
 
 **Message**:
 ```json
+{
+    "content": "mQU4UKfCyXW0GQyG8pO8lNRWUo3Mxkq1mEscuLXisi7CYyKh0UJ6zWl46ubXqG/29nfIXFwxeGh09ioUWhcbXcCHJk6exUJ8M79SlHBqEEtN3UMLdARdH/zJd2Q9rXi5I/1tGBXvYFiinXHsri17ihutZ2MgJB91EdNgPPt0Rbfocl45WmPodHRn9e7jLD8Iw2qDWcnfK+T9CxShNzyC/rVCu3SY7H9PJh0Ok/YBEvFbM6Zjh0Y6ljgQntYha6rwkfebH0aGpV+7d5gELlXIc3FK9thftXpKSt3ET+IiHGy0VusNeEjmNGs/T+24kFlSCMPwV85hxsvW7BMk0K7PWjZAffAOjsaCVsnHkY/lLsMtxYewj2vH5kHNEUL/SWKvbJ0fw7eFqB8BFjIBy5O1M+ciUONQAYi3UXk8mwbAP4+nQHBB6fj9aCubOh1cB5Qv3mVdJr2rMwUDiV8tjFx3xMm2caYCxCZdefdQMG/aJVHEjHLAf4++by1vnRgiVbbZsgv2HIBy05KOxpRl3pwySiqXQeje/htvIC2MReqRpBH6TEy1x3aveDTdk8jyEFOiCPMFyK9WlAcfzvMWlVCzDuwzKoh56gJh/QOXLFNrRYFRxyc2ELnErQ3qo3EYUng54h9lJFS/jRIHTPNtMM/wweT2wi0AU91WkslP/pHytU4=",
+    "metadata": "message",
+    "recipient": "53TTZUaFGVB9koKDF1tpxc3APGUVEBMqURpr1aMFZwhJPP8oJksaspq6XgHVaoZijwDnDHRYuMDFvbzNZUYcH2tt8NzMqtd",
+    "sender": "52P6EwT4zhpEfFhDLc9WSWGkSaEudfF7t597EnFRnQ8sYv4SqdS7BwDPddiJtxeQUHSP7SYAfgycaPhwMvWLc8p8M26eDkB"
+}
 ```
 
 ## RPC messages
