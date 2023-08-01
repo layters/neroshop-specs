@@ -100,6 +100,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
         "name": "avatars-xK2cS4dDrz8LNke4-X4YlUw-t500x500.jpg",
         "size": 72163
     },
+    "created_at": "2023-08-01T15:00:23Z",
     "display_name": "dude",
     "metadata": "user",
     "monero_address": "5ARm5QSDW3uWT8EEeoQ5mHghcw82SqYrUHzS99CS1TaxY3XDMGCyeDUN59veZwYfLCNH6mvvzKwJYiLv7Bag1Swn7sSEF9e",
@@ -113,6 +114,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
         "name": "pixelArt-1689350451803.png",
         "size": 3348
     },
+    "created_at": "2023-08-01T15:40:23Z",
     "display_name": "lupita",
     "metadata": "user",
     "monero_address": "59PFsC9wHepdrz5oseoDW3auk8a1HtUZbDHmPWwbBFjsa3kcue9N4GbK2hMRoFGgyLGNv14Z2QjDGjT1TrsC1UerPK3igm4",
@@ -186,7 +188,8 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
     "product_id": "2b715653-da61-4ea0-8b5a-ad2754d78ba1",
     "rater_id": "59HiXx4PNJDd4sWVWhWtqb8m9pB7Huyc9HgybAwjFGkj27HozxkaLXNDhFH4wtzfYCe8GLzhA5YUHPUGWnjfRhvdL5HHE1C",
     "signature": "SigV2BExHYCAKkhoTbC3L4tx2EeHTaz2ZAtLfu7YgWcu1Ex3JXVk4X8XssfPE3TLBSQGRNLFENo4iAMa3gFV3u3bKoEvY",
-    "stars": 3
+    "stars": 3,
+    "timestamp": "2023-07-30T08:05:38Z"
 }
 ```
 **Seller rating**:
@@ -197,7 +200,8 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
     "rater_id": "59JKGvtkpPQ7UocLgK5UV79GTEYJqDsJMgF9CiKmmms858VKvVvx1uX8DfXKYLWtoK9LVL38WQgf1JVn8yGWXZuJJzVwWGt",
     "score": 1,
     "seller_id": "5AncSFWauoN8bfA68uYpWJRM8fFxEqztuhXSGkeQn5Xd9yU6XqJPW7cZmtYETUAjTK1fCfYQX1CP3Dnmy5a8eUSM5n3C6aL",
-    "signature": "SigV2idt52jHJfAic6ccT5yQwkJ3iP7cmNZ8Y1DYFBoQme9C9foRBzM4b2XeZwCQyCwvoDPM4xbWQ3FBP9NvVCBMe6gkr"
+    "signature": "SigV2idt52jHJfAic6ccT5yQwkJ3iP7cmNZ8Y1DYFBoQme9C9foRBzM4b2XeZwCQyCwvoDPM4xbWQ3FBP9NvVCBMe6gkr",
+    "timestamp": "2023-07-29T04:10:38Z"
 }   
 ```
 
