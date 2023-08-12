@@ -97,7 +97,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
 ```json
 {
     "avatar": {
-        "name": "avatars-xK2cS4dDrz8LNke4-X4YlUw-t500x500.jpg",
+        "name": "32c34b46588b53c4212557cf91d5bca391a83c8b45cd403227d4bf73666a49e0.jpg",
         "size": 72163
     },
     "created_at": "2023-08-01T15:00:23Z",
@@ -111,7 +111,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
 ```json
 {
     "avatar": {
-        "name": "pixelArt-1689350451803.png",
+        "name": "5d2c5842ba2341d5be8a579b2db50cf5db491d3ae8c8adbd9bcdaccf6403ffb8.png",
         "size": 3348
     },
     "created_at": "2023-08-01T15:40:23Z",
