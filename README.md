@@ -140,7 +140,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
         "images": [
             {
                 "id": 0,
-                "name": "monero-symbol-on-white-480.png",
+                "name": "2d2480374904c515684793a6ce174da1452c0ce87aabebfb8a11a30ebf648d51.png",
                 "size": 6768
             }
         ],
@@ -167,7 +167,7 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
         "images": [
             {
                 "id": 0,
-                "name": "gitea.png",
+                "name": "6ccce4863b70f258d691f59609d31b4502e1ba5199942d3bc5d35d17a4ce771d.png",
                 "size": 26874
             }
         ],
