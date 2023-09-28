@@ -136,7 +136,6 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
     "product": {
         "category": "Sports & Outdoors",
         "description": "",
-        "id": "0442c628-beab-4564-b6de-8a6baa7c6490",
         "images": [
             {
                 "id": 0,
@@ -163,7 +162,6 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
     "product": {
         "category": "Food & Beverages",
         "description": "",
-        "id": "cfe34584-d57c-4ec3-badf-f9b406a7b4d2",
         "images": [
             {
                 "id": 0,
@@ -236,11 +234,12 @@ Set messages can only be processed while in IPC mode so that outside nodes canno
 **Message**:
 ```json
 {
-    "content": "EPwhlCsN/r+P9PQr2+WyvNrxgV+32eBtWjS9UMmyrjBsXvJ0j4JJ++8WSpDUBClC4Us7PTmz8zospCK+FgH1P1vZm6NS+GFzXmxE7Zo5WXq6xBGe2KU7BCtOzXX7axm93+Jlb/1cWl7QRv4SXf/7DXEhRS6wjByCgk0Jl3ltcDpSWJeppZeJM9K4EXRNR5aoxyzeSi6TWfPOadf3/VCNryjqroOYojAhthaQ+qGJxEJ78Ef1lxn4jExvthqIsHFIyxpbdJN+/NiW9jHpHJoJqR8/xk5okCZmBFPWs6gDSPUenQK7Mk62yzLE6+ccVWTPdEmT39nPjYjHJLR+p8bWpyCRWCe6uOs4Mlhft//CWvS/eX06yLUhhMVoPMwKUSAcVAswKw4hC1XcJwOP+YQQkY8HFjphFo/eRgXtUcVWiKK3tiwW3aJontucH2mNnVyXEeoqQ20UtSfaCsHn4Hs2Jzw0BtxC7+G381k+ferRvG1jpNRm7UmN86LpEqwPK6BMdm90bOEP5FWJLOMGkwvR3inkzLy8dO2W4FILgnKWKFrKKjpNh/goHr/zeiBjtqk6UMa5vSOrGtAHQuPzWJttvb9PJ/wRxSTlZVTZO2lNxcw6dofikxV7n0ZapywN1BM34awUE54EYc3oYkDVFlmYdjCyQxUOD57W8h5z8WViBto=",
+    "content": "covNjIfeDiZQOzJwZ9AkLLVWk3xyzuTYSoe6yv7sdyS4ZrplsODEw6E9SV/0oAWyYcoTslImuSlzf7IqfROXOYE6J4nobyUQf+rMz8wf6YKk9yGM9gMIhruszsydfUmOWuCtFLGUe48K1sCl3KllXXixTEhspX0PUX3Y52R19gSDteACJSaIHUgpYAMiqUH0rBQIYZ2KiWEHGmgq08fKkRbNpHUfIsyaoXKNIai44F0fu2zRjbbVo3lBpUzYPDml7nI6ZzJYLONFAml9pCi3LVZt9u1CLya9x2vQkmuZShSo71gMDvBWNI0eWT28/rD8caZ0LzKcVY2v/QlACylbYRw+Y5givC20yQxVuVBBdUz8n2Nnghbv67hq7xO/skX5D/KPBs7WDEmU5acZ+EG1LA8WEAvp+r+Swopq0rBYZyZZIxrTC0NTZexQltqpbzju0VokwMiRj/17/4e0MP/XYFwpYPrxlHoOddtE17FM/7RSsjmK1Qw7YrElNHMKpXW3bSOsa4FglVCv9uC3kfwJvdGoxjI64bVQPHfJM7MG9sz42rG8HRC4rJ3h2tsZ2SYRGecTyhe6e1RLc7kjoqHvuv7Z0x8dGQ+/49KfDhmWaAcfMgH8B2rzWXL7fUh2zQKo+A8sv35cMK7YKUgvtSAO8SbgRQTeiI8xt2CadJXV7Jc=",
+    "expiration_date": "2025-09-28T10:12:02Z",
     "metadata": "message",
-    "recipient_id": "57k6T5W8H7gQWwCgHuN3mdg7q6Jk1g6UUYc6E8LvgrKfMdJj5sFViBeZxgF1T79z5TZpzf9mLAWUrH8KMUpuiEzNTiFjGgP",
-    "sender_id": "ecUlBKvTUFDN39iIwP7OMm51S7BgUFQtli7TCaaugyDCl8LQckocLvS4SiD5fBdvf059994yk0wOGSJy7i2aQGC7kn5sv2gqoDGbYlKsfU5RGfApgkFeE7tgXfEM2oiygNnGThRT0K4M1Q3347VRzAZqAt0M/1VDXgH3eONbFqkbdKhrxWtOUTKMcB0Y3WRcnqOsrOEhCblJyvPn7+/lZN2xo10eVLtzRUcK8e8btcWIgW8vsMR5Ma8I5Q/ZVC6RZXSOiy1ixRKsNGC0z414Wp7rC0onvDVF+Hd0imtdT/dgIN++MCj4zyuDIgJJFZR7qCOJ2AfbSEpONQJI4GbOO1uSf7IgUPnuOWJwO+9FeKO1pWCpfmefxdzTXolL3KGJnAlvW84EurBt7y4RZ27qFqYuzZ7M0282nOOC91kMo6rREWn9zRMFrdecv5MhB3rGVxAdV1jeaf9eW3nsJBJn55y9tccMahSxvQNfGyTU6f2x2KKJpzDayRs7PL4NzRoXJ1UuDAG58lPHasre5H8HVHFXW3wzJHNP4QVPrFPsELwrV6rmSykD7U+nlilA5s0mps+bEdj6ou6ZtgP2qalrZTV/jzpwOEJGPKT8m+k2DxIEVlnIpZHYDvJe8sLtikMdZIFJrBycm4ddqrHQA9A4NQm7FyXlapJPMmBr8Tl+Gos=",
-    "timestamp": "2023-07-28T04:10:38Z"
+    "recipient_id": "59MemvccRxiCHiKaZzQTNaY7AQvTJ7oMsPR6WVg6S1dUBcr53WXRUxtU7YsVcrdsXFEYmGi6DgoXcWUQf9hPwLspPYZksAS",
+    "sender_id": "v1r9QM1vDMH2Me0SzSSC0oHQ6P7pcA632fxCZkHKga9glXoDh/NErzXbonuDc/YAim/aHZoNhN8apE3h4esMFHLeaTs988b7Bl1xCKQ3Kv5A1tFMAyKNgsuk1zQpq02kgZ5nVUgKGiDtsGWbA0kYWSVskFUH29KbDvTTIFl/m6NjmpsDwkCdP4qMj83KaBY1el8KXdlyYENymtp08bPHqUuRA4EDtTlCcx/AAtaf1a4ZebuLiCZ/UBvn6UkyC7fgGoDTcE7BC4o7hw5G79zsRzok2VqdLzU4jZWCczBwhCsaO+Z/ayUVonR8u1Vpo6Wfb0oIS4Lb9uwtRvtbdQYhiSPMBFTs7V3jFNwJMm7EldwH0R9VogTFRrMg838aZs2TINN5TOxWF8nLhK+0QteKHE9FBCOucuyTv1L0JA+nJTy+bXyAeOi3xw2G6WsPwWAUDKAuKeQlV2Znpfruf7Cw4HCFtofTKbgtC8bINJ/M4pjZ5Z082/O9xBjWMYH6vKWWWQTbf4EXxt3rGcnyc1SY454zP27lqHbbclHUWZs84DWdL30UTMorj9Bzolxr8gWuEIYf9/UmRkDDpVT5ERMiv94IfRQK2RFBphJNhXxsIpsYbog2x4Th3W2GAFOoVOAH15deR+l6KTX4MkLyrGRWvbQeMO2iRoTL+V9grchtvW8=",
+    "timestamp": "2023-09-28T10:12:02Z"
 }
 ```
 
