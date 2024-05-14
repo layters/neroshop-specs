@@ -236,14 +236,16 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 **Message**:
 ```json
 {
-    "content": "covNjIfeDiZQOzJwZ9AkLLVWk3xyzuTYSoe6yv7sdyS4ZrplsODEw6E9SV/0oAWyYcoTslImuSlzf7IqfROXOYE6J4nobyUQf+rMz8wf6YKk9yGM9gMIhruszsydfUmOWuCtFLGUe48K1sCl3KllXXixTEhspX0PUX3Y52R19gSDteACJSaIHUgpYAMiqUH0rBQIYZ2KiWEHGmgq08fKkRbNpHUfIsyaoXKNIai44F0fu2zRjbbVo3lBpUzYPDml7nI6ZzJYLONFAml9pCi3LVZt9u1CLya9x2vQkmuZShSo71gMDvBWNI0eWT28/rD8caZ0LzKcVY2v/QlACylbYRw+Y5givC20yQxVuVBBdUz8n2Nnghbv67hq7xO/skX5D/KPBs7WDEmU5acZ+EG1LA8WEAvp+r+Swopq0rBYZyZZIxrTC0NTZexQltqpbzju0VokwMiRj/17/4e0MP/XYFwpYPrxlHoOddtE17FM/7RSsjmK1Qw7YrElNHMKpXW3bSOsa4FglVCv9uC3kfwJvdGoxjI64bVQPHfJM7MG9sz42rG8HRC4rJ3h2tsZ2SYRGecTyhe6e1RLc7kjoqHvuv7Z0x8dGQ+/49KfDhmWaAcfMgH8B2rzWXL7fUh2zQKo+A8sv35cMK7YKUgvtSAO8SbgRQTeiI8xt2CadJXV7Jc=",
-    "expiration_date": "2025-09-28T10:12:02Z",
+    "content": "nYknoIq5JyLzNQ7Tv/8HBBBdAAWK6JhFk1i1rajccOl6+6lAXgxYHuHJdADwX3CGp/sMi/LsPi3687Oy3lK44fCE6+OMCz9bpkqQ5pX/ORwxi9Lcmdu+5PDG9TaVLEMzOedU//R6/TVnXpedGOTGD+BFbumXYUGVcaGtZTp0EHnQJr+UNE1cBTo7jF/sqCQBjQ5QmkGPDLvumCCEXyt6QQRq+Q+W7sDeH17HpAI8iVMOtgzI9Oz0BdSHLIVpqTpGIoD5BYrHOv389Q6iBea2CciGQdEgRc9wwg8JWp4+KGan7rwkBzjAdu8Y5Ab2yfRkpYWab4Qqn9Pj8DBMl+Qw7Cri/uNt1Tf4rBkef68fzrfdVHtGWMUc5oiml7o47sE9cEh6G0Ll+j34VGD/WGBjsQ03sDN7/IsIjg92DlsSexGJj+mmTAseRA+ZC5WM8hS8rO9b7Q6EAUjFXnZf6ybdqki5U1K2COsqHPyHGUHsSNCs+UQjIVDqEBTRv32EaGmmOgtEgSUeMc9FnLNCXiZvFOACib03Ngvvt1df74z9WS+zML2FPtTX5dPSw9qbS2p9bwW5T7lnx1xOTbpO5fvnObq1kqUejrIMcWR1Ixkmo/PZP/nIwkWGGmnJcTU5oVowzjf/XrEWbGRw+pDAvAb9uwYIoPvrnkzBASI58PRni5Q=",
+    "expiration_date": "2024-06-13T01:41:27Z",
     "metadata": "message",
-    "recipient_id": "59MemvccRxiCHiKaZzQTNaY7AQvTJ7oMsPR6WVg6S1dUBcr53WXRUxtU7YsVcrdsXFEYmGi6DgoXcWUQf9hPwLspPYZksAS",
-    "sender_id": "v1r9QM1vDMH2Me0SzSSC0oHQ6P7pcA632fxCZkHKga9glXoDh/NErzXbonuDc/YAim/aHZoNhN8apE3h4esMFHLeaTs988b7Bl1xCKQ3Kv5A1tFMAyKNgsuk1zQpq02kgZ5nVUgKGiDtsGWbA0kYWSVskFUH29KbDvTTIFl/m6NjmpsDwkCdP4qMj83KaBY1el8KXdlyYENymtp08bPHqUuRA4EDtTlCcx/AAtaf1a4ZebuLiCZ/UBvn6UkyC7fgGoDTcE7BC4o7hw5G79zsRzok2VqdLzU4jZWCczBwhCsaO+Z/ayUVonR8u1Vpo6Wfb0oIS4Lb9uwtRvtbdQYhiSPMBFTs7V3jFNwJMm7EldwH0R9VogTFRrMg838aZs2TINN5TOxWF8nLhK+0QteKHE9FBCOucuyTv1L0JA+nJTy+bXyAeOi3xw2G6WsPwWAUDKAuKeQlV2Znpfruf7Cw4HCFtofTKbgtC8bINJ/M4pjZ5Z082/O9xBjWMYH6vKWWWQTbf4EXxt3rGcnyc1SY454zP27lqHbbclHUWZs84DWdL30UTMorj9Bzolxr8gWuEIYf9/UmRkDDpVT5ERMiv94IfRQK2RFBphJNhXxsIpsYbog2x4Th3W2GAFOoVOAH15deR+l6KTX4MkLyrGRWvbQeMO2iRoTL+V9grchtvW8=",
-    "timestamp": "2023-09-28T10:12:02Z"
+    "recipient_id": "5AzTEG7CMZAPZYnUfvToHjK9884crCSPxLiKkTGXJcdpSH5nu3KqceuG8urjoChFAw16HfZb3XygshG2CMzBphrJJygvp43",
+    "sender_id": "ZR/+hAR2AZCUiDzkTle4DRa+MDsK1zNbOBBsipX5DNRp1OYMiKDMYGx73I02V79rV6AoHr2D2YmDVd1sh+HYRwsJgyMmyxnBTLggudF/hIwsThiX9pzMdF7vPFnr3GRHWvlqkqvRPe1/PTQ2e+HL1hv5umSrfekrUblWQ/stTfwJwkNoAxzBQYfhz9StIX8piZbAGQS/k81QXDP/mBmBHYVeBjnYXa/4XJMhOIA7qq6+mwweyuu6YtERFJqT9by9ubW2XNCV1vA94ErLOF90ur/gJsb3TAtR0iRK2YElevc80lLwwvyc/DABmLHNdaSypM1cdcJigzo7eoRm2ZniK3NM8DE3urETgi5N45io6qIG97I6Ng3GhL6oSpCdLAWq1t3+eBDU5kS9GOLIW2JJWrLlzFb0SWhQjNyNLm45K66ryb3uVgLE0yM2Ixftzh1X4hIVBWLQ8nNZhSVoSRsZtj/JEhKYGlVQZSh3W5dpaUTfxRroLAZlDFHT4Pi9mdhUNOKFw+yoDT9lJrJq91SqhCer712+0LsHoDnByeuj6+aMMqyxOaWSmi47yhElLzJ0hH2OrQ0thgYT+dx1GU8obj19tKik/t/7C5gHmAquaswnqp5s/K9ISqCZ0cDCciO/Iv1WWJG0C/GFcecpq3vZMvJhED+Q8xXmMEe/fyN0hVI=",
+    "signature": "SigV2UrRgknKtdcwCdLPX4YnYtdF8Tf2F4oyPqVwCuQNgD1yeE5JFkecWmg9P8FjjofpLMTZ1DRJD8HPj4TGHcBptPYWW",
+    "timestamp": "2024-05-14T01:41:27Z"
 }
 ```
+_**Using a tool like [base64decode](https://www.base64decode.org/), you can decode the base64 encoded `content` and `sender_id` and observe that these fields have been encrypted.**_
 
 ## RPC messages
 [`MessagePack`](https://msgpack.org/) is the binary serialization format used to transmit data throughout the neroshop network. JSON data is first converted to msgpack before it is transmitted. This is because msgpack reduces the JSON data size by 32%, making it smaller, faster and more efficient to transfer data across the network.
