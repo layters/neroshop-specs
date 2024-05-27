@@ -1,6 +1,6 @@
 # neroshop DHT specification
 
-Authors: [@larteyoh](https://github.com/larteyoh)
+Authors: [@layter](https://github.com/layters)
 
 ## Overview
 The neroshop DHT is based on the Kademlia Distributed Hash Table (DHT) with some additional protocol message types.
@@ -11,7 +11,7 @@ The neroshop DHT is based on the Kademlia Distributed Hash Table (DHT) with some
 
 ### Replication factor (`r`)
 Represents the number of nodes closest to a key, in which `put` messages are sent to.
-The default value for `r` is currently 10 and it is usually the same value as the maximum closest nodes (`k`) or lower.
+The default value for `r` is currently 3 and it is usually the same value as the maximum closest nodes (`k`) or lower.
 
 ###  Maximum closest nodes (`k`)
 Represents the number of nodes closest to a key or id, in which `get` and `find_node` messages are sent to. The default value for `k` is currently 20.
