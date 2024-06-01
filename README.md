@@ -130,26 +130,32 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 {
     "condition": "New",
     "currency": "USD",
-    "date": "2023-07-20T06:52:01Z",
-    "id": "44d7f6f9-9a94-4fd9-84ad-7dc22a182ada",
-    "location": "Germany",
+    "date": "2024-06-01T07:23:12Z",
+    "id": "2d16f091-014d-48b8-8584-930bd0e7eb1f",
     "metadata": "listing",
-    "price": 10.0,
+    "price": 2.0,
     "product": {
-        "category": "Sports & Outdoors",
+        "category": "Miscellaneous",
         "description": "",
         "images": [
             {
                 "id": 0,
-                "name": "2d2480374904c515684793a6ce174da1452c0ce87aabebfb8a11a30ebf648d51.png",
-                "size": 6768
+                "name": "315c5f2b56c73076b63f34f2f864c03f815ebbe7d1cbfd36ebffbeac125f8c9b.png",
+                "piece_size": 65536,
+                "pieces": [
+                    "8399ce1110e683dc20fb045460ad0731e7eac44f401d909a7b8f30d15ceec968",
+                    "e828e0c6e6cac2b914b2a2dd69e98061c4f33806143ecf89682360803f752018",
+                    "ac5d34cda0f4684ffdfa8055091a3e97022f5b8a86dcde66c5c48327651b75b8",
+                    "803ad3811a04b80f121a63e248700c0b1ce4250703f2ddfb836a4bde8d896125"
+                ],
+                "size": 220345
             }
         ],
-        "name": "Monero ball"
+        "name": "xmr wallpaper"
     },
     "quantity": 1,
-    "seller_id": "5ARm5QSDW3uWT8EEeoQ5mHghcw82SqYrUHzS99CS1TaxY3XDMGCyeDUN59veZwYfLCNH6mvvzKwJYiLv7Bag1Swn7sSEF9e",
-    "signature": "SigV2bo1rMpaK9xeWU6CEuSnSCJ7buT8qANS8gUsjRx4wVpqpdxwj7LbLitkjYfD1NJeYmvJndYM9bUe2qWGrn7W35ebz"
+    "seller_id": "51zyekXb8ifVKTofny3QwvVdGBdWCGDcJ7iWYwnCtytXCqCXU8eprxYM3zssxa9qCFgfDmgQ6ZCyPM4WETirNjtf9QV4bQ9",
+    "signature": "SigV28r6hBj3yCxLdhKVrW3pHaiSYjJ8qCNg7Vb2wMoR82pneKD8XtJKv8dk3v64zhJUFqxLzHzyuJsgzRGrGM2AfEJZb"
 }
 ```
 ```json
