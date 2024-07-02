@@ -188,7 +188,7 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 }
 
 ```
-_Listings will be self-hosted and never published to the network so that they are easy to modify as decentralized data is hard to keep consistent across multiple nodes and also this helps a bit to prevent spam since whenever a node goes offline, their listings will not be visible to the rest of the network._
+_Listings will be self-hosted and never published to the network so that they are easy to modify as decentralized data is hard to keep consistent across multiple nodes and also this helps a bit to prevent spam since whenever a node goes offline, its listings will not be visible to the rest of the network until it comes back online._
 
 **Product rating**:
 ```json
