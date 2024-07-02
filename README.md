@@ -35,7 +35,7 @@ The hash table is an `std::unordered_map` that stores a `std::string` key repres
 
 * `find_node`: This query type is used to request a list of nodes with an id closest to a specific node ID or key.
 
-    - The response is a `nodes` message containing information about nodes such as their IP addresses and ports.
+    - The response is a `nodes` message containing information about nodes such as their IP or i2p addresses and ports.
 
 
 * `put`: This query type is used to store key-value data in a receiving node's hash table. 
@@ -49,10 +49,19 @@ On receiving a `put` request, a node will `store` the key-value pair data in its
     - The kind of data stored in the hash table is typically related to user account, listings, orders, and ratings/reviews. 
 Each data contains a `metadata` field which specifies the type of data that is being stored.
 
+    - Data is validated (and verified using RSA or Monero signatures) before being inserted into a node's hash table.
+
 
 * `get`: This query type is used to retrieve the value to a given key. 
 
-    - The querying node typically sends a `get` message to the `k` nodes with an ID closest to the key and when any of those closests nodes receive the `get`, they respond with a message containing the value to the requested key. In the case that any of the closest nodes do not have the value in their hash table, they ~attempt to send `get` messages to the closest nodes in their routing table until the value is found or not~ respond with an error message indicating that the key was not found in their hash table (this is to speed up searches).
+    - The querying node typically sends a `get` message to the `k` nodes with an ID closest to the key and when any of those closests nodes receive the `get`, they respond with a message containing the value to the requested key. In the case that any of the closest nodes do not have the value in their hash table, they ~attempt to send `get` messages to the closest nodes in their routing table until the value is found or not~ respond with an error message indicating that the key was not found in their hash table (this is to speed up searches). 
+
+
+* `get_providers`: This query type requests a list of providers for a given key.
+    
+    - This query is sent to the `k` closest nodes in the routing table. In addition to responding with a list of providers for the key, the closest nodes first check their own hash tables to see if they also hold the value for the given key. If the key is found then they add themselves to the list of peers.
+    
+    - The response contains a `values` field containing information about the providers' such as their IP or i2p addresses and ports.
 
 
 * `map`: This query type takes the value then uses it to create search terms and map them to the corresponding key.
@@ -62,20 +71,7 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     
     - The process of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
     
-    - On receiving a map request, a node would then add the querying node to its list of providers for the key specified in the map request. 
-
-* `get_providers`: This query type requests a list of providers for a given key.
-    
-    - This query is sent to the `k` closest nodes in the routing table. In addition to responding with a list of providers for the key, the closest nodes first check their own hash tables to see if they also hold the value for the given key. If the key is found then they add themselves to the list of peers.
-    
-    - The response contains a `values` field containing information about the providers' such as their IP addresses and ports.
-
-
-* `set`: Same as put, except it updates the value to a key without changing the key.
-
-    - This query also checks the value and validates it with the signature beforehand, using the user's RSA or Monero keys to ensure that the data can only be modified by its originator.
-
-    - Set messages can only be processed while in IPC mode so that outside nodes cannot modify other peers' data anyhow.
+    - On receiving a map request, a node would then add the querying node to its list of providers for the key specified in the map request.
 
 
 ## Features
@@ -84,13 +80,13 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 - [x] Keys/Node IDs
     - represented as SHA-3-256 hashes
 - [x] KBuckets
-    - represented as an unordered_map of <int, std::vector<std::unique_ptr<Node>>>. A max of 256 kbuckets is set, each of them containing up to 25 elements.
+    - represented as an unordered_map of <int, std::vector<std::unique_ptr<Node>>>. A max of 256 kbuckets is set, each of them containing up to 20 elements.
 - [x] XOR Distance between Keys
-- [x] Basic protocol message types: `ping`, `find_node`, `put`, and `get` as well as two additional message types specific to this implementation: `map` and `set`.
+- [x] Basic protocol message types: `ping`, `find_node`, `put` (`store`), and `get` (`find_value`) as well as two additional message types specific to this implementation: `get_providers` and `map`.
 - [x] Periodic health checking
-    - checks node liveliness every `NEROSHOP_DHT_PERIODIC_CHECK_INTERVAL` seconds
+    - checks node liveliness every `NEROSHOP_DHT_NODE_HEALTH_CHECK_INTERVAL` seconds
 - [x] Periodic republishing (refresh)
-    - republishes data to the network every `NEROSHOP_DHT_REPUBLISH_INTERVAL` hours
+    - republishes data to the network every `NEROSHOP_DHT_DATA_REPUBLISH_INTERVAL` seconds
     - in addition to periodic republishing, node data is automatically republished upon termination of the GUI client
 - [x] Distributed indexing
     - the moment a node joins the network, it receives indexing data from the initial `k` closest nodes it contacts via the `map` protocol message type.
@@ -99,7 +95,6 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 - [x] Data integrity verification
     - verifies data integrity using either **monero** or RSA digital signatures
 - [ ] node IP address blacklisting
-- [ ] Keyword/search term blacklisting
 - [x] Expiration dates on certain data such as `orders`
 
 ## Data serialization (examples)
@@ -274,5 +269,3 @@ Each query consists a `query` field containing the query type, an `args` field c
 ## References
 
 [BitTorrent](http://bittorrent.org/beps/bep_0005.html)
-
-[anarkiocrypto](https://twitter.com/AnarkioC) - for helping me come up with the design for the data structure for users, listings, orders etc.
