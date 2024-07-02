@@ -14,11 +14,11 @@ Represents the number of nodes closest to a key, in which `put` messages are sen
 The default value for `r` is currently 3 and it is usually the same value as the maximum closest nodes (`k`) or lower.
 
 ###  Maximum closest nodes (`k`)
-Represents the number of nodes closest to a key or id, in which `get` and `find_node` messages are sent to. The default value for `k` is currently 20.
+Represents the number of nodes closest to a key or node ID, in which `get`, `find_node`, and `get_providers` messages are sent to. The default value for `k` is currently 20.
 
 ### Distance
 
-In all cases, the distance between two keys/node ids is `XOR(sha3_256(key1),
+In all cases, the distance between two keys/node IDs is `XOR(sha3_256(key1),
 sha3_256(key2))`.
 
 ### Routing table
@@ -33,26 +33,26 @@ The hash table is an `std::unordered_map` that stores a `std::string` key repres
 
 * `ping`: This query type is often used to check the liveliness of a node.
 
-* `find_node`: This query type is used to request a list of nodes with an id closest to a specific id or key.
+* `find_node`: This query type is used to request a list of nodes with an id closest to a specific node ID or key.
 
     - The response is a `nodes` message containing information about nodes such as their IP addresses and ports.
 
 
 * `put`: This query type is used to store key-value data in a receiving node's hash table. 
 
-    - The querying node sends a `put` message to the `r` nodes with an id closest to the key.
+    - The querying node sends a `put` message to the `r` nodes with an ID closest to the key.
 If any of the closest nodes fail to respond to the put request, they are replaced by other closest nodes within the routing table.
 
     - When the querying node makes a put request and it is the originator of the data, it also stores its own data in its hash table right after sending the `put` to the other nodes in its routing table.
 On receiving a `put` request, a node will `store` the key-value pair data in its own hash table.
 
     - The kind of data stored in the hash table is typically related to user account, listings, orders, and ratings/reviews. 
-Each data contains metadata which specifies the type of data that is being stored.
+Each data contains a `metadata` field which specifies the type of data that is being stored.
 
 
-* `get`: This query type is used to find a value to a specific key. 
+* `get`: This query type is used to retrieve the value to a given key. 
 
-    - The querying node typically sends a `get` message to the `k` nodes with an id closest to the key and when any of those closests nodes receive the `get`, they respond with a message containing the value to the requested key. In the case that any of the closest nodes do not have the value in their hash table, they attempt to send `get` messages to the closest nodes in their routing table until the value is found or not.
+    - The querying node typically sends a `get` message to the `k` nodes with an ID closest to the key and when any of those closests nodes receive the `get`, they respond with a message containing the value to the requested key. In the case that any of the closest nodes do not have the value in their hash table, they ~attempt to send `get` messages to the closest nodes in their routing table until the value is found or not~ respond with an error message indicating that the key was not found in their hash table (this is to speed up searches).
 
 
 * `map`: This query type takes the value then uses it to create search terms and map them to the corresponding key.
@@ -61,11 +61,19 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     - A "map" request is similar to Bittorent's "announce_peer" in a sense that you are announcing that you have the data that you want indexed (peers cannot send a map request containing data that they themselves do not possess).
     
     - The process of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
+    
+    - On receiving a map request, a node would then add the querying node to its list of providers for the key specified in the map request. 
+
+* `get_providers`: This query type requests a list of providers hosting the data for a given key.
+    
+    - This query is sent to the `k` closest nodes in the routing table. In addition to responding with a list of providers for the key, the closest nodes first check their own hash tables to see if they also hold the value for the given key. If the key is found then they add themselves to the list of peers.
+    
+    - The response contains a `values` field containing information about the providers' such as their IP addresses and ports.
 
 
 * `set`: Same as put, except it updates the value to a key without changing the key.
 
-    - This query also checks and validates the signature beforehand, using the user's RSA or Monero keys to ensure that the data can only be modified by its originator.
+    - This query also checks the value and validates it with the signature beforehand, using the user's RSA or Monero keys to ensure that the data can only be modified by its originator.
 
     - Set messages can only be processed while in IPC mode so that outside nodes cannot modify other peers' data anyhow.
 
@@ -185,6 +193,7 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 }
 
 ```
+_Listings will be self-hosted and never published to the network so that they are easy to modify as decentralized data is hard to keep consistent across multiple nodes and also this helps a bit to prevent spam since whenever a node goes offline, their listings will not be visible to the rest of the network._
 
 **Product rating**:
 ```json
