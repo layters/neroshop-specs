@@ -64,7 +64,7 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     
     - On receiving a map request, a node would then add the querying node to its list of providers for the key specified in the map request. 
 
-* `get_providers`: This query type requests a list of providers hosting the data for a given key.
+* `get_providers`: This query type requests a list of providers for a given key.
     
     - This query is sent to the `k` closest nodes in the routing table. In addition to responding with a list of providers for the key, the closest nodes first check their own hash tables to see if they also hold the value for the given key. If the key is found then they add themselves to the list of peers.
     
