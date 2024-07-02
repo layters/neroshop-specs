@@ -83,12 +83,12 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     - represented as an unordered_map of <int, std::vector<std::unique_ptr<Node>>>. A max of 256 kbuckets is set, each of them containing up to 20 elements.
 - [x] XOR Distance between Keys
 - [x] Basic protocol message types: `ping`, `find_node`, `put` (`store`), and `get` (`find_value`) as well as two additional message types specific to this implementation: `get_providers` and `map`.
-- [x] Periodic health checking
+- [x] Periodic node health checks
     - checks node liveliness every `NEROSHOP_DHT_NODE_HEALTH_CHECK_INTERVAL` seconds
-- [x] Periodic republishing (republish)
+- [x] Periodic data republishing
     - republishes data to the network every `NEROSHOP_DHT_DATA_REPUBLISH_INTERVAL` seconds
     - in addition to periodic republishing, node data is automatically republished upon termination of the GUI client
-- [x] Periodic bucket refresh (refresh)
+- [x] Periodic bucket refresh
     - "refreshes" the routing table's kbuckets every `NEROSHOP_DHT_BUCKET_REFRESH_INTERVAL` seconds by sending a `find_node` query to the `k` closest nodes for even more nodes closest to its node ID.
 - [x] Distributed indexing
     - the moment a node joins the network, it receives indexing data from the initial `k` closest nodes it contacts via the `map` protocol message type.
