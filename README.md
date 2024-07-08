@@ -3,7 +3,7 @@
 Authors: [@layter](https://github.com/layters)
 
 ## Overview
-The neroshop DHT is based on the Kademlia Distributed Hash Table (DHT) with some additional protocol message types.
+The neroshop DHT is based on the Kademlia DHT (Distributed Hash Table).
 
 
 
@@ -43,13 +43,12 @@ The hash table is an `std::unordered_map` that stores a `std::string` key repres
     - The querying node sends a `put` message to the `r` nodes with an ID closest to the key.
 If any of the closest nodes fail to respond to the put request, they are replaced by other closest nodes within the routing table.
 
-    - When the querying node makes a put request and it is the originator of the data, it also stores its own data in its hash table right after sending the `put` to the other nodes in its routing table.
+    - When the querying node makes a put request and it is the originator of the data, it also stores its client's own data in its hash table (both in-memory and on-disk) right after sending the `put` to the other nodes in its routing table.
 On receiving a `put` request, a node will `store` the key-value pair data in its own hash table.
 
-    - The kind of data stored in the hash table is typically related to user account, listings, orders, and ratings/reviews. 
-Each data contains a `metadata` field which specifies the type of data that is being stored.
+    - Each data contains a `metadata` field which specifies the type of data that is being stored. Metadata names include: `listing`, `user`, `message`, etc.
 
-    - Data is validated (and verified using RSA or Monero signatures) before being inserted into a node's hash table.
+    - Data is validated (and verified using Monero digital signatures) before being inserted into a node's hash table.
 
 
 * `get`: This query type is used to retrieve the value to a given key. 
@@ -57,9 +56,9 @@ Each data contains a `metadata` field which specifies the type of data that is b
     - The querying node typically sends a `get` message to the `k` nodes with an ID closest to the key and when any of those closests nodes receive the `get`, they respond with a message containing the value to the requested key. In the case that any of the closest nodes do not have the value in their hash table, they ~attempt to send `get` messages to the closest nodes in their routing table until the value is found or not~ respond with an error message indicating that the key was not found in their hash table (this is to speed up searches). 
 
 
-* `get_providers`: This query type requests a list of providers for a given key.
+* `get_providers`: This query type requests a list of peers that store the value for a given key.
     
-    - This query is sent to the `k` closest nodes in the routing table. In addition to responding with a list of providers for the key, the closest nodes first check their own hash tables to see if they also hold the value for the given key. If the key is found then they add themselves to the list of peers.
+    - This query is sent to the `k` closest nodes in the routing table. In addition to responding with a list of peers for the key, the closest nodes first check their own hash tables to see if they also hold the value for the given key. If the key is found then they add themselves to the list of peers.
     
     - The response contains a `values` field containing information about the providers' such as their IP or i2p addresses and ports.
 
@@ -69,9 +68,7 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 
     - A "map" request is similar to Bittorent's "announce_peer" in a sense that you are announcing that you have the data that you want indexed (peers cannot send a map request containing data that they themselves do not possess).
     
-    - The process of mapping search terms to DHT keys is known as inverted indexing or simply, indexing.
-    
-    - On receiving a map request, a node would then add the querying node to its list of providers for the key specified in the map request.
+    - On receiving a map request, a node would then add the querying node to its list of peers for the key specified in the map request.
 
 
 ## Features
@@ -89,44 +86,36 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     - republishes data to the network every `NEROSHOP_DHT_DATA_REPUBLISH_INTERVAL` seconds
     - in addition to periodic republishing, node data is automatically republished upon termination of the GUI client
 - [x] Periodic bucket refresh
-    - "refreshes" the routing table's kbuckets every `NEROSHOP_DHT_BUCKET_REFRESH_INTERVAL` seconds by sending a `find_node` query to the `k` closest nodes for even more nodes closest to its node ID.
+    - node "refreshes" the routing table's kbuckets every `NEROSHOP_DHT_BUCKET_REFRESH_INTERVAL` seconds by sending a `find_node` query to the `k` closest nodes for even more nodes closest to its node ID.
 - [x] Distributed indexing
     - the moment a node joins the network, it receives indexing data from the initial `k` closest nodes it contacts via the `map` protocol message type.
 - [x] Data validation
     - validates data correctness
 - [x] Data integrity verification
     - verifies data integrity using either **monero** or RSA digital signatures
-- [ ] node IP address blacklisting
-- [x] Expiration dates on certain data such as `orders`
+- [ ] node IP/i2p address blacklisting
+- [x] Expiration dates on certain data
 
 ## Data serialization (examples)
 **User:**
 ```json
 {
     "avatar": {
-        "name": "32c34b46588b53c4212557cf91d5bca391a83c8b45cd403227d4bf73666a49e0.jpg",
-        "size": 72163
+        "name": "820498a0e45ce69840efda6d1c9f8ab27e43357ef43707d6e80fd818fc629799.jpg",
+        "piece_size": 65536,
+        "pieces": [
+            "4901e8a761d3c7bb05ff31496553a37fc73d6b538712184a3740f5d6c112cf72",
+            "bdf4070acec55b2b25d8a669d524d8fe46ad0d1e4056ff705d529448b286210e",
+            "7b3db335757ae530061e8f24a437f43c3799a2517947d722622505d23942bbd2"
+        ],
+        "size": 189993
     },
-    "created_at": "2023-08-01T15:00:23Z",
+    "created_at": "2024-07-08T02:42:00Z",
     "display_name": "dude",
     "metadata": "user",
-    "monero_address": "5ARm5QSDW3uWT8EEeoQ5mHghcw82SqYrUHzS99CS1TaxY3XDMGCyeDUN59veZwYfLCNH6mvvzKwJYiLv7Bag1Swn7sSEF9e",
-    "public_key": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAoGKa3cN7JNj6xKgvG49f\nkg4Izod2oqNqoraYHMLAhI29MWXUIc8FizhhJUlO4Ts3i2qFaq1ng5jM15K2SQUo\na1ve4rATAbL0j+AnFMPQ/i883m6UJRdO5rUdtjLiKELuXckaQ3pbOmJ06lXI3qQ+\nzrPtgHp7hK2zfJSI+lgqHfU5AoQThOo5+QhuVgu1eJrvTMphc+XSPQ/8/7aPAdsB\nWI3FFy/QRtKr7RsjrsC2rTzYkqUo+MBXocN6d/1qCEPOgLuKJZvsKHt0VtWEHcQ2\ndTIqn4MhCh7Vz7psS1rBlfFW/j+PHXsQS7IRtU8RIy9yAoCKRO80aBhUe1ktvLaP\n2zXnW87vrRABYCc9fy9e3ZzCbPbAE/avozF/qR+XusBEKuvNUmMKW7CBet4CsGXc\nCAbJh5HIwrp+lgMZlgGLTjQ5cfegqtYtXWlJz09BbaY1+VNKhhhd0X/CN7apmqpu\njq94C9Db3dQGqTowHYflnwB3G3iXEcllmwECgFAIy4AG1cx3p/xkyXKe7r8QKcZF\nywE/2IQg8xmqtNDyQvcrIA9y6nyARskYZuqio62eQTaLKiYPTELmg5XmXyyVarJw\nIVXeWjqFz7WtS3RnM7RxoN8cwnd4JPIFTusGkucLAd/TBYKytPrsV68dvUmyrm1F\no63Sv7T7kBpeGIn5VOFY0wUCAwEAAQ==\n-----END PUBLIC KEY-----\n",
-    "signature": "SigV2PagGh1SMm7KVrahMXeb7177Mzox7RHr1ciS1juk5WLfWatZiEods4ougHZKzgujp1oYhtG2vDguYcH3ac5zMYtjY"
-}
-```
-```json
-{
-    "avatar": {
-        "name": "5d2c5842ba2341d5be8a579b2db50cf5db491d3ae8c8adbd9bcdaccf6403ffb8.png",
-        "size": 3348
-    },
-    "created_at": "2023-08-01T15:40:23Z",
-    "display_name": "lupita",
-    "metadata": "user",
-    "monero_address": "59PFsC9wHepdrz5oseoDW3auk8a1HtUZbDHmPWwbBFjsa3kcue9N4GbK2hMRoFGgyLGNv14Z2QjDGjT1TrsC1UerPK3igm4",
-    "public_key": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwtXNtHoyaiMGbtB2R1m+\nVMI15xjzERCnUsqL2qrxCo/QCcCqtKjEhdknPQcMO5taAmaUJnovDfJcmIA5M0kQ\n4ZKjKtzREN/YSanvgAemkX75I5rQPXIMQAz4Cs5Ie+cheOrl1WYo8DoAzlNRi8z0\nT2MDNBisMaWhqGfwEUgNtXQjxZpcYs9GmiM4qgIdCSniA6ixuPAsLNCI/LXhEBxX\ng1tyYJW4nOm9Sb0vlDr/ZiQRPDz23TdvlF6C1OXotsdd2dhNsbSEtXE7wEUYPX6O\n2UXbBF5PtzrmTuB6zoC9U4qfXrpkFJ9uPxpjER2fa0RSdcRhmywh/WTgVOUjR8iT\nRqSEs+8ByyZ2qV6TUSzKo2dWwCQIO6NHcX6ITbSrUeGFddIWuUmWVRGtG9d62yZD\n5o2895Qd+0J51L7l7xUNcFHmjxSm35AiGsvHJ4u583pz4DUodB8vASODuz/85X3x\nFdmLHV0IpeKZvpaSmYIRUsizg6SzXHNTYHEmOIlYCCJ16Zz2WO9P3OkzNms0ScKq\nfnL+OSBC47zquWpI905bB625SVJJaUZJvlIg6/wU2fdfVteeuboEiMiPyted9aId\nS8Vq8Ks8yFTZJzvhyOqpzSLx6/v5OuA+ABQH+AHOax36QRB+i6Fe3Vnc/YJLjmTp\n/8+KD7atMZb0UOpGCy4INeUCAwEAAQ==\n-----END PUBLIC KEY-----\n",
-    "signature": "SigV2gASDvXcQkeW5LLzt7mMxZu5NvBb3s9rawYzf9wDVoWqeUtxtKTtWhvLVM9pn3rJ6aBYvKNX47tuhv57BPRP6jTyL"
+    "monero_address": "52HpXJ54diSiHxjT91XdAUPsg8s1wrpDXNFkSCDpinN51Ph9N2c8AVue6bD9iKcRWwcrrk17Q72sQipMwtmECbTH43BMwyV",
+    "public_key": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEApsartGobT3xOvgGHsJuY\nENx2BfGAsZeoZA+YaqbKPn4q+1gW1U6mKXvd1NUxum3kYPWy8PGqIcN3R3rw4roj\nv4F7qdRS3Tw5N5dL+lgQQXeBkNkUpZPLIJx+z7scc9PZHuLUZsVnMio/ZXuvo3ov\nGI7uWogqmziOEvkqNLB9PZ764PGFlb8jWNkayCR5QtCKjK68lk7hk7E5R8P7G1aJ\n5DBwZ2onR5DTN8As1NEa4B45+oqv+jI3O2JbKCFek01mAUnoGpqNAklJSQJPys2d\nVTdhCgEwDA2eB8J924UhJWPHyskzMFbSBa/K3oJjUZirEF2jygKZg27WwjeRqSmu\ngRIw6tEWXn9RgL6h0on/du/10rG+aCPKx2U9tiaciGcrPoDMoIAihxqXlj4tD/v7\noA97Z6ducK16CugAduY8PYrUjL3A9K7On0/LPS5PJZp68r9ZzLqHYyc80s9Wk5Nl\nR/c114srtjB33YMWrG4IItOXrz1dh/RcZEknzaMULYqOJz3WKYL7irVcMEwCEs7R\nML8/ic8Qhb/qD0l3JLrd5G9u3QOdv7Cp5G5LFeASH+ooJUNgesfBRUIKk6UL6VIU\nG0b8s+Ehefzml33JoO7z6T+O0UCw8Dq3+0sdj51ZtEe8A1mdJQiiFeTuUUU8D1Sv\n0Bz2umO0Fmc5RIifOh9tdnMCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+    "signature": "SigV2abdQosYGCTJcTLAVAmAH1bQQjsRtXV1ePCiWqktDtwPQVf7MJJNKiJCak1mBDqsfWPFkAQp3qrvCiEmtM1S9HcRD"
 }
 ```
 
@@ -162,33 +151,6 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     "seller_id": "51zyekXb8ifVKTofny3QwvVdGBdWCGDcJ7iWYwnCtytXCqCXU8eprxYM3zssxa9qCFgfDmgQ6ZCyPM4WETirNjtf9QV4bQ9",
     "signature": "SigV28r6hBj3yCxLdhKVrW3pHaiSYjJ8qCNg7Vb2wMoR82pneKD8XtJKv8dk3v64zhJUFqxLzHzyuJsgzRGrGM2AfEJZb"
 }
-```
-```json
-{
-    "condition": "New",
-    "currency": "USD",
-    "date": "2023-07-20T07:14:26Z",
-    "id": "2cd40b7b-a142-425f-b17a-afe9e6064a78",
-    "location": "Thailand",
-    "metadata": "listing",
-    "price": 5.0,
-    "product": {
-        "category": "Food & Beverages",
-        "description": "",
-        "images": [
-            {
-                "id": 0,
-                "name": "6ccce4863b70f258d691f59609d31b4502e1ba5199942d3bc5d35d17a4ce771d.png",
-                "size": 26874
-            }
-        ],
-        "name": "Green Tea"
-    },
-    "quantity": 100,
-    "seller_id": "59PFsC9wHepdrz5oseoDW3auk8a1HtUZbDHmPWwbBFjsa3kcue9N4GbK2hMRoFGgyLGNv14Z2QjDGjT1TrsC1UerPK3igm4",
-    "signature": "SigV2ZqBnw1sass4BrpWeq5HPacdf1zgdfkikYEW356kJw4XrazHuRPrirYydSeGVcm2wcRTWWLu5g1oX2PfxogjnnYNQ"
-}
-
 ```
 _Listings will be self-hosted and never published to the network so that they are easy to modify as decentralized data is hard to keep consistent across multiple nodes and also this helps a bit to prevent spam since whenever a node goes offline, its listings will not be visible to the rest of the network until it comes back online._
 
@@ -257,15 +219,15 @@ _Listings will be self-hosted and never published to the network so that they ar
     "timestamp": "2024-05-14T01:41:27Z"
 }
 ```
-_**Using a tool like [base64decode](https://www.base64decode.org/), you can decode the base64 encoded `content` and `sender_id` and observe that these fields have been encrypted.**_
+_Using a tool like [base64decode](https://www.base64decode.org/), you can decode the base64 encoded `content` and `sender_id` to confirm that these fields have been encrypted._
 
 ## RPC messages
 [`MessagePack`](https://msgpack.org/) is the binary serialization format used to transmit data throughout the neroshop network. JSON data is first converted to msgpack before it is transmitted. This is because msgpack reduces the JSON data size by 32%, making it smaller, faster and more efficient to transfer data across the network.
 
-There are three types of messages that are sent in the neroshop network: `query`, `response`, and `error`. A query is basically a request made by a peer. The primary query types used are `ping`, `find_node`, `put`, `get`, `map`, and `set`.
+There are three types of messages that are sent in the neroshop network: `query`, `response`, and `error`. A query is basically a request made by a peer. The primary query types used are `ping`, `find_node`, `put`, `get`, `get_providers` and `map`.
 When a query is sent, normally a response should be expected. Responses are typically a sign of the successful execution of a query. Sometimes the result of a query may be an error if a function could not be executed or no value is returned from a `get` request, or perhaps something else.
 
-Each query consists a `query` field containing the query type, an `args` field containing the arguments for the specific query type. A response consists of any field/value representing the result of the response. All messages must have an `id` field containing the node's id and a `tid` to identify which message matches with which response. With the exception of IPC mode where the local GUI client sends queries to the local daemon server. A `version` field is also included in each message to specify which version of the neroshop DHT is currently being used by a peer.
+Each query consists a `query` field containing the query type, an `args` field containing the arguments for the specific query type. A response consists of any field/value representing the result of the response. All messages must have an `id` field containing the node's ID and a `tid` (transaction ID) to identify which message matches with which response, with the exception of messages sent when in IPC mode where the local GUI client sends queries to the local daemon server. A `version` field is also included in each message to specify which version of the neroshop DHT is currently being used by a peer.
 
 
 ## References
