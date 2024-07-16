@@ -221,6 +221,10 @@ _Listings will be self-hosted and never published to the network so that they ar
 ```
 _Using a tool like [base64decode](https://www.base64decode.org/), you can decode the base64 encoded `content` and `sender_id` to confirm that these fields have been encrypted._
 
+
+> Note: `user`, `seller_rating`, `product_rating`, and `message` datas are already feature complete while `listing` and `order` datas still need more work.
+
+
 ## RPC messages
 [`MessagePack`](https://msgpack.org/) is the binary serialization format used to transmit data throughout the neroshop network. JSON data is first converted to msgpack before it is transmitted. This is because msgpack reduces the JSON data size by 32%, making it smaller, faster and more efficient to transfer data across the network.
 
