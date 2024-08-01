@@ -124,43 +124,46 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
 {
     "condition": "New",
     "currency": "USD",
-    "date": "2024-07-26T22:50:54Z",
+    "custom_rates": {
+        "Monero": 200
+    },
+    "date": "2024-08-01T02:11:17Z",
     "delivery_options": [
         "Digital"
     ],
-    "id": "a0150881-2264-4d27-8661-adbd7020038b",
+    "id": "bfca7597-7d92-41ce-82e6-d8185beeb975",
     "metadata": "listing",
     "payment_coins": [
         "Monero"
     ],
     "payment_options": [
-        "Multisig"
+        "Multisig",
+        "Finalize"
     ],
-    "price": 144.0,
+    "price": 3,
     "product": {
         "category": "Miscellaneous",
         "description": "",
         "images": [
             {
                 "id": 0,
-                "name": "04ed5a5a6b12e5e8c2db8d87c85897593e36eba87c9471e61b8316733fdc3b90.jpg",
-                "piece_size": 131072,
+                "name": "db8a8b2d41d88d9ba7c77b08d84bee1130ea276c8fa4a429576d640eff207265.jpg",
+                "piece_size": 16384,
                 "pieces": [
-                    "76531c7a499df92fa262f5ed135905658cf2cc0038df558e5703daf8b7798210",
-                    "31f08d3b94c0d0ef4da62262fa2f239ec82dd53a0d3ab835869b59c5dc26fd65",
-                    "fde09a2d1b2eff1c927cea1301a666699538b9e1ff132336e0f5e93bc46f1dd7",
-                    "781f0cc9ebcac3ed517a2d3f374d77acef9021e91f7373531aa8634a247d8be3"
+                    "badd58d9a928849ec2c65f01b1648876cb1ac90b72df6c0c20af4511171bbc34",
+                    "7b5e02a451b6fb1309c8ea294302834e81e7c561b1bd30740ee14e398960b443",
+                    "66bf1f3aee1dbe00a395367d0f32a130a10fb0ed9ccf328909b1fc440c4d3b0e",
+                    "e62629590a6b265b0381b568b6fcc38e4f6e354a350d3df2648ac3f0a905de01"
                 ],
-                "size": 398976
+                "size": 61159
             }
         ],
-        "name": "Scenic wallpaper"
+        "name": "some product"
     },
     "quantity": 1,
-    "seller_id": "55Gz9AVGZoiCEQxnj52hfsJhMi3zSgrAy9566MEWu9yKYvi9sPZWYphfuiotBvAn7P2XtUuxxdfMmZbXxxxstafmEyWB2ht",
-    "signature": "SigV2DwPF8htzpgCf1nNEqaJsfATtRggR5BVJdDRZLrPup19gXJP8TCNj5pBhRCpRPPhDCEDTFRcfEavaH54PBVtxRRWD"
+    "seller_id": "57yxBQXi7ztiooZKPqWTYy6HT9okm6QT26xtT14vTexgHFrKnxGRJV7LGaFwwFBAjkJ6NAdZBYDe1bxmQqR566cZCUYvaAb",
+    "signature": "SigV2D8xiG9NzHcsQBq4nC5hGX2GigRPWouW3VKzUSVWZfBTkScKYTMusLE2dxbemV23xV76ZfQdMY2dJXKKwCs3r76Tn"
 }
-
 ```
 _Listings will be self-hosted and never published to the network so that they are easy to modify as decentralized data is hard to keep consistent across multiple nodes and also this helps a bit to prevent spam since whenever a node goes offline, its listings will not be visible to the rest of the network until it comes back online._
 
