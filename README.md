@@ -125,7 +125,7 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     "condition": "New",
     "currency": "USD",
     "custom_rates": {
-        "Monero": 400
+        "XMR": 400
     },
     "date": "2024-08-01T02:27:26Z",
     "delivery_options": [
@@ -134,7 +134,7 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     "id": "1603c8dd-14de-4040-a044-e0d94b298a1d",
     "metadata": "listing",
     "payment_coins": [
-        "Monero"
+        "XMR"
     ],
     "payment_options": [
         "Multisig"
