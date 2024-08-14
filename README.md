@@ -125,19 +125,22 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
     "condition": "New",
     "currency": "USD",
     "custom_rates": {
-        "XMR": 400
+        "XMR": 170
     },
-    "date": "2024-08-01T02:27:26Z",
+    "date": "2024-08-14T02:02:42Z",
     "delivery_options": [
-        "Shipping"
+        "Digital"
     ],
-    "id": "1603c8dd-14de-4040-a044-e0d94b298a1d",
+    "id": "644a8a54-a3a1-4b00-87fb-bab7384a7415",
     "metadata": "listing",
     "payment_coins": [
         "XMR"
     ],
+    "payment_methods": [
+        "Crypto"
+    ],
     "payment_options": [
-        "Multisig"
+        "Finalize"
     ],
     "price": 2,
     "product": {
@@ -146,26 +149,21 @@ Unlike `put`, `map` stores data in the local database file rather than the in-me
         "images": [
             {
                 "id": 0,
-                "name": "b1237ac0ba8f82d0cf7386c26dafe48ae8734378a21ceb8c5d3302a3780f61be.png",
-                "piece_size": 16384,
+                "name": "647c8228b70407c030ea50edfa1c50fe77a9865fe2b454eb827376a201dd245e.jpg",
+                "piece_size": 131072,
                 "pieces": [
-                    "527452349febb0dea4bcd5686bf7508f2cad62aaa117352763c705749f17de47",
-                    "bf5c15e81998ae8ed9dcd89581ff339d10363bc2a6c7205ad49ff2375d251cba"
+                    "6df0a92043c17c8e2c7606123f0a020f68dde9793dd836582e63bbcc5f20bb46",
+                    "9bd66158ebfce5957096b199aba70922843c955d8c0f612f600d05683c23030b",
+                    "586e000bb24cfdfa5e95762528d5ca82ad585125e6755099bb6c519cf094e8bd"
                 ],
-                "size": 20422
+                "size": 315793
             }
         ],
         "name": "some product"
     },
     "quantity": 1,
     "seller_id": "57yxBQXi7ztiooZKPqWTYy6HT9okm6QT26xtT14vTexgHFrKnxGRJV7LGaFwwFBAjkJ6NAdZBYDe1bxmQqR566cZCUYvaAb",
-    "shipping_costs": {
-        "Standard": 6.99
-    },
-    "shipping_options": [
-        "Standard"
-    ],
-    "signature": "SigV2NUCQAa5FPD3NtzPGVvRzKu47LcoTxhWRbSbzJAoSSJxoDJXe78BcFUHh5Lh5uQ5zPsDh2oXQ32cJffYc9wRP2n8F"
+    "signature": "SigV2M4j2ZEfatz9j4L9LYe6gYnEzAbCaxynH1Xpp8vnitg1XN2M6edjbnqkFtAq5Wvk9rf4ifCjT26xzFjEgvUNJUEoe"
 }
 ```
 _Listings will be self-hosted and never published to the network so that they are easy to modify as decentralized data is hard to keep consistent across multiple nodes and also this helps a bit to prevent spam since whenever a node goes offline, its listings will not be visible to the rest of the network until it comes back online._
